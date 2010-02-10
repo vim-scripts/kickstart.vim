@@ -1,8 +1,7 @@
 " Vim syntax file
 " Language: RedHat kickstart installation description files
 " Maintainer: David Ne\v{c}as (Yeti) <yeti@physics.muni.cz>
-" Last Change: 2003-07-23
-" URL: http://trific.ath.cx/Ftp/vim/syntax/kickstart.vim
+" Last Change: 2010-02-10
 
 " Setup {{{
 " React to possibly already-defined syntax.
@@ -26,7 +25,8 @@ syn keyword kickstartTodo TODO FIXME NOT XXX contained
 syn match kickstartEquals "=" contained
 syn match kickstartInclude "^\s*%include\s\+.*"
 syn region kickstartPackages matchgroup=kickstartInclude start="^\s*%packages\>" end="\(^\s*%\)\@=\|\%$" contains=kickstartPackageGroup,kickstartComment,kickstartPackageOption2
-syn region kickstartPrePost matchgroup=kickstartInclude start="^\s*%\(pre\|post\)\>" end="\(^\s*%\)\@=\|\%$" contains=kickstartComment,kickstartPrePostOption2
+syntax include @Sh syntax/sh.vim
+syn region kickstartPrePost matchgroup=kickstartInclude start="^\s*%\(pre\|post\)\>" end="\(^\s*%\)\@=\|\%$" contains=kickstartComment,kickstartPrePostOption2,@Sh
 syn match kickstartPackageGroup "^@ .*"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" }}}
 " Options {{{
